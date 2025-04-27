@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 25 47% 48%;  /* #a56f4e */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 206 11% 19%;  /* #2c3235 */
+  --secondary-foreground: 0 0% 100%;
+  --accent: 37 100% 64%;  /* #ffb347 */
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  --neutral-100: 0 0% 100%;
+  --neutral-200: 0 0% 96%;
+  --neutral-800: 0 0% 20%;
+  --neutral-600: 0 0% 40%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 25 47% 48%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 206 11% 19%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 37 100% 64%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute w-0 h-0.5 -bottom-1.5 left-0 bg-primary transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .dropdown {
+    @apply relative inline-block;
+  }
+  
+  .dropdown-content {
+    @apply hidden absolute bg-white min-w-[200px] shadow-lg z-10;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    @apply block;
+  }
+
+  .service-card:hover {
+    @apply transform -translate-y-2.5 shadow-xl transition-all duration-300;
+  }
+
+  .book-card:hover img {
+    @apply transform scale-105 transition-transform duration-300;
+  }
+
+  .hero-overlay {
+    @apply bg-gradient-to-b from-black/60 to-black/30;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease forwards;
+  }
+}
